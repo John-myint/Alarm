@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    font-size: 50px;
+    font-family:'Times New Roman', Times, serif;
+    width: 300px;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.display {
+    font-size: 200px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
