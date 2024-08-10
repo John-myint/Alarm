@@ -55,6 +55,11 @@ btn.addEventListener("click", ()=>{
     hrValue = parseInt(hr.value , 10);
     minValue = parseInt(min.value , 10);
     secValue = parseInt(sec.value , 10);
+
+    isNaN(hrValue) ? hrValue = 0 : hrValue;
+    isNaN(minValue) ? minValue = 0 : minValue;
+    isNaN(secValue) ? secValue = 0 : secValue;
+
     clearInput();
     executeAlarm();
     updateAlarm();
