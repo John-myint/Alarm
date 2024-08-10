@@ -3,7 +3,6 @@ const hr = document.getElementsByClassName("hr")[0];
 const min = document.getElementsByClassName("min")[0];
 const sec = document.getElementsByClassName("sec")[0];
 const pausebtn = document.getElementsByClassName("pausebtn")[0];
-const startbtn = document.getElementsByClassName("startbtn")[0];
 
 const hrDisplay = document.getElementsByClassName("hrDisplay")[0];
 const minDisplay = document.getElementsByClassName("minDisplay")[0];
@@ -20,22 +19,43 @@ const updateAlarm = () => {
 
 }
 
+const clearInput = ()=> {
+    hr.value = "";
+    min.value = "";
+    sec.value = "";
+}
+
 const executeAlarm = ()=> {
-    intervalId = setInterval(() => {
-        secValue === 0 ? secValue = 59 : secValue -= 1;
-        minValue === 0 ? minValue = 59 : 
-        updateAlarm();
-    }, 1000);
+if (!intervalId) {
+        intervalId = setInterval(() => {
+            if (secValue === 0) {
+                secValue = 59;
+                if (minValue === 0) {
+                    if (hrValue === 0) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                        alert("Time's up!");
+                        return;
+                    } else {
+                        
+                    }
+                } else {
+                    minValue -= 1;
+                }
+            } else {
+                secValue -= 1;
+            }
+            updateAlarm();
+        }, 1000);
+}
 }
 btn.addEventListener("click", ()=>{
     hrValue = parseInt(hr.value , 10);
     minValue = parseInt(min.value , 10);
     secValue = parseInt(sec.value , 10);
-    updateAlarm();
-})
-
-startbtn.addEventListener("click",()=>{
+    clearInput();
     executeAlarm();
+    updateAlarm();
 })
 
 pausebtn.addEventListener("click", ()=>{
