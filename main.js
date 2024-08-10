@@ -37,7 +37,8 @@ if (!intervalId) {
                         alert("Time's up!");
                         return;
                     } else {
-                        
+                        hrValue -= 1;
+                        minValue = 59;
                     }
                 } else {
                     minValue -= 1;
@@ -50,6 +51,7 @@ if (!intervalId) {
 }
 }
 btn.addEventListener("click", ()=>{
+
     hrValue = parseInt(hr.value , 10);
     minValue = parseInt(min.value , 10);
     secValue = parseInt(sec.value , 10);
